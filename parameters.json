@@ -1,0 +1,14 @@
+{
+    "fun":"x1*x2+4*x1^4+x2^2+3*x1",
+    "dim":2,
+    "gradient":["x2+16*x1^3+3","x1+2*x2"],
+    "initial_guess":[0,0],
+    "toler_s":1e-6,
+    "toler_r":1e-6,
+    "max_iteration":10000,
+    "alpha_init":0.1,
+    "mu":0.1,
+    "sigma":0.2,
+    "h":0.1,
+    "neta":0.9
+}
