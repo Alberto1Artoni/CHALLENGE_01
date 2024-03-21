@@ -8,7 +8,8 @@ here a brief presentation of all the files and useful hints to understand better
 3. Gradient_method.hpp/Gradient.cpp --> this is the class that collects the three different method used to minimize the function:
    -analitical:
       - gradient method: to refresh alpha is present a template with three different choice to prooced, notice that to choose one of them the user is forced to go inside the function and 
-        tipe one of the method listed in enumerator defined inside the class, this was necessary to solve the choice of alpha at compile time.
+        tipe one of the method listed in enumerator defined inside the class, this was necessary to solve the choice of alpha at compile time (the default one in the code is 
+        exponential_decay).
       - Momentum_method: here I use a fixed alpha value, for semplicity the alpha_init of the struct, that previously was needed as first input for the parameter, and for neta the fixed 
         value 0.9
    -numerical: finite gradient method: the same as the continuos one, but with a numerical computation of the gradient using the the centred formula
