@@ -90,16 +90,14 @@ Point Gradient_method::gradient_solve(MuparserFun fun,std::vector<MuparserFun> g
             x_new.set_coo(i,x_old[i]-alpha*gradient[i](x_old.get_coordinates()));
 
         std::vector<double> vect(param.dim);
-        Point grad_distance(vect);
         Point grad_eval(vect);
         
         for(std::size_t i=0;i<param.dim;++i){
-            grad_distance.set_coo(i,gradient[i](x_new.get_coordinates())-gradient[i](x_old.get_coordinates()));
-            grad_eval.set_coo(i,gradient[i](x_old.get_coordinates()));
+             grad_eval.set_coo(i,gradient[i](x_old.get_coordinates()));
         }
 
     if(cont>param.max_iteration || (x_new-x_old).euclidean_norm() <param.toler_s
-        || grad_distance.euclidean_norm()<param.toler_r)
+        || grad_eval.euclidean_norm()<param.toler_r)
             stop=true;
       
         x_old=x_new;
@@ -136,19 +134,18 @@ Point Gradient_method::gradient_solve_finite(MuparserFun fun, double h){
             x_new.set_coo(i,x_old[i]-alpha*(finite_diff_grad(fun,h,x_old)).get_coo(i));
 
         std::vector<double> vect(param.dim);
-        Point grad_distance(vect);
+        Point grad_eval(vect);
         for(std::size_t i=0;i<param.dim;++i)
-            grad_distance.set_coo(i,(finite_diff_grad(fun,h,x_new)).get_coo(i)-
-            (finite_diff_grad(fun,h,x_old)).get_coo(i));
+            grad_eval.set_coo(i,(finite_diff_grad(fun,h,x_old)).get_coo(i));
             
           
       if(cont>param.max_iteration || (x_new-x_old).euclidean_norm() <param.toler_s
-        || grad_distance.euclidean_norm()<param.toler_r)
+        || grad_eval.euclidean_norm()<param.toler_r)
             stop=true;
       
         x_old=x_new;
         ++cont;
-        alpha=Gradient_method::alpha_compute<choice>(cont,x_old,fun,grad_distance);
+        alpha=Gradient_method::alpha_compute<choice>(cont,x_old,fun,grad_eval);
         
     }
 
@@ -188,14 +185,14 @@ Point Gradient_method::momentum_solve(MuparserFun fun,std::vector<MuparserFun> g
        }
 
         std::vector<double> vect(param.dim);
-        Point grad_distance(vect);
+        Point grad_eval(vect);
        
         for(std::size_t i=0;i<param.dim;++i)
-          grad_distance.set_coo(i,gradient[i](x_new.get_coordinates())-gradient[i](x_old.get_coordinates()));
+          grad_eval.set_coo(i,gradient[i](x_old.get_coordinates()));
           
 
     if(cont>param.max_iteration || (x_new-x_old).euclidean_norm() <param.toler_s
-        || grad_distance.euclidean_norm()<param.toler_r)
+        || grad_eval.euclidean_norm()<param.toler_r)
             stop=true;
       
         x_old=x_new;
