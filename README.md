@@ -21,5 +21,6 @@ here a brief presentation of all the files and useful hints to understand better
 5 main.cpp --> here i simply read all the input data from the json file and compute the minimum giving the choice to the user to use is favourite method
 
 6. Makefile --> to have a correct behaviour in the compilation pheraps this command is needed (with your specified path): LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/lucadalessandro/pacs-examples/Examples/lib
+   and then also change inside the makefile the path for the inclusions 
 
         
