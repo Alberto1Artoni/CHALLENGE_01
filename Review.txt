@@ -1,0 +1,11 @@
+In the README.md I would have expected something a bit more clear.
+  - Use sections to divide several information:
+      - what your code is about
+      - how to compile your code
+      - how to run some tests
+
+This README.md could be improved.
+
+There are no comments in the whole code... The code is quite readable and kinda self-explaining, but comments where required.
+
+Why is the <random> library included? Careful in copy-pasting the code :)
